@@ -1,28 +1,76 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import "remixicon/fonts/remixicon.css";
+import PromoterIcon from "../../images/PromoterIconBC.png";
+
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("catalog", "promoters/1");
+const { Content: Introduction } = await entry.render();
+const entry2 = await getEntry("catalog", "promoters/2");
+const { Content: InputDesc } = await entry2.render();
 ---
 
 <Layout>
-  <h1 class="text-4xl font-bold">Promoters</h1>
-  <section class="flex flex-row">
-    <div
-      class="flex flex-row items-center my-2 mr-5 bg-blue-600 p-2 rounded-lg"
-    >
-      <i class="ri-file-list-3-line text-4xl"></i>
-      <p class="py-4 px-2">Catalog</p>
-    </div>
-    <div
-      class="flex flex-row items-center my-2 mr-5 bg-blue-600 p-2 rounded-lg"
-    >
-      <i class="ri-quill-pen-line text-4xl"></i>
-      <p class="py-4 px-2">Design</p>
-    </div>
-    <div
-      class="flex flex-row items-center my-2 mr-5 bg-blue-600 p-2 rounded-lg"
-    >
-      <i class="ri-questionnaire-line text-4xl"></i>
-      <p class="py-4 px-2">Help</p>
-    </div>
+  <section class="mx-20 md:mx-40 lg:mx-60">
+    <section class="flex flex-row justify-between items-center my-4 flex-wrap">
+      <h1 class="text-5xl font-bold">Promoters</h1>
+      <section class="flex flex-row my-2">
+        <div
+          class="flex flex-row items-center my-2 mr-5 border-2 border-black text-black transition-colors duration-200 cursor-pointer ease-in-out hover:bg-blue-600 px-2 rounded-lg hover:text-white"
+        >
+          <i class="ri-file-list-3-line text-4xl"></i>
+          <p class="py-4 px-2">Catalog</p>
+        </div>
+        <div
+          class="flex flex-row items-center my-2 mr-5 border-2 border-black text-black transition-colors duration-200 cursor-pointer ease-in-out hover:bg-green-600 px-2 rounded-lg hover:text-white"
+        >
+          <i class="ri-quill-pen-line text-4xl"></i>
+          <p class="py-4 px-2">Design</p>
+        </div>
+        <div
+          class="flex flex-row items-center my-2 mr-2 border-2 border-black text-black transition-colors duration-200 cursor-pointer ease-in-out hover:bg-pink-600 px-2 rounded-lg hover:text-white"
+        >
+          <i class="ri-questionnaire-line text-4xl"></i>
+          <p class="py-4 px-2">Help</p>
+        </div>
+      </section>
+    </section>
+    <section class="text-xl flex flex-row">
+      <div>
+        <section
+          class="flex flex-row flex-wrap justify-center xl:justify-start xl:flex-nowrap"
+        >
+          <div class="mr-2">
+            <Introduction />
+          </div>
+          <div class="lg:scale-x-[90%] max-w-2xl m-4 xl:m-0">
+            <img src={PromoterIcon.src} alt="Promoter Icon" />
+            <p class="text-[1rem] text-gray-600">
+              The registry symbol for a promoter is shown above a typical
+              sequence for a bacterial promoter. The lavender shaded boxes
+              indicate the two most conserved regions of a bacterial promoter
+              and are located at -10 and -35 bases from the transcriptional
+              start site (shaded in green). There are, on average, 17bp between
+              the -10 and -35 sites and 7bp between the -10 site and the
+              transcriptional start site pribnowharleylisser1lisser2.
+            </p>
+          </div>
+        </section>
+        <h2 class="text-3xl my-4 font-bold">
+          Input/Ouput Description of Promoter Function
+        </h2>
+        <InputDesc />
+      </div>
+    </section>
+    <section>
+      <h2 class="text-3xl my-4 font-bold">References</h2>
+      <div class="flex flex-col px-4 text-xl">
+        <li><a href="#">PMID 1093168</a></li>
+        <li><a href="#">PMID 3550697</a></li>
+        <li><a href="#">PMID 8479900</a></li>
+        <li><a href="#">PMID 8055959</a></li>
+      </div>
+    </section>
   </section>
 </Layout>

@@ -1,3 +1,7 @@
+---
+import NavigationBar from "../components/nav/NavigationBar.astro";
+---
+
 <!doctype html>
 <html lang="en" class="bg-repeat">
   <head>
@@ -15,7 +19,8 @@
     </style>
   </head>
 
-  <body style="padding: 20px;">
+  <body>
+    <NavigationBar />
     <slot />
   </body>
 </html>
